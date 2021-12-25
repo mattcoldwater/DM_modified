@@ -93,7 +93,7 @@ class VGGPyramid(nn.Module):
                 x = self.__dict__['_modules']['level_' + str(layer_n)](x)
                 outputs.append(x)
 
-            if float(torch.__version__[:3]) >= 1.6:
+            if float(torch.__version__[:3]) >= 1.1:
                 x = torch.nn.functional.interpolate(x, scale_factor=0.5, mode='bilinear', align_corners=False,
                                                     recompute_scale_factor=True)
             else:

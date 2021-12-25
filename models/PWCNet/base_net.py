@@ -41,14 +41,14 @@ class BasePWCNet(nn.Module):
 
         vgrid = vgrid.permute(0, 2, 3, 1)
 
-        if float(torch.__version__[:3]) >= 1.3:
+        if float(torch.__version__[:3]) >= 1.1:
             output = nn.functional.grid_sample(x, vgrid, align_corners=True)
         else:
             output = nn.functional.grid_sample(x, vgrid)
 
         # the mask makes a difference here
         mask = torch.ones(x.size()).cuda()
-        if float(torch.__version__[:3]) >= 1.3:
+        if float(torch.__version__[:3]) >= 1.1:
             mask = nn.functional.grid_sample(mask, vgrid, align_corners=True)
         else:
             mask = nn.functional.grid_sample(mask, vgrid)

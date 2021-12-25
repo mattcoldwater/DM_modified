@@ -81,7 +81,7 @@ def warp(x, flo):
 
     vgrid = vgrid.permute(0, 2, 3, 1)
 
-    if float(torch.__version__[:3]) >= 1.3:
+    if float(torch.__version__[:3]) >= 1.1:
         output = nn.functional.grid_sample(x, vgrid, align_corners=True)
     else:
         output = nn.functional.grid_sample(x, vgrid)
@@ -106,7 +106,7 @@ def warp_with_mapping(x, vgrid):
     vgrid[:, 1, :, :] = 2.0 * vgrid[:, 1, :, :].clone() / max(H - 1, 1) - 1.0
 
     vgrid = vgrid.permute(0, 2, 3, 1)
-    if float(torch.__version__[:3]) >= 1.3:
+    if float(torch.__version__[:3]) >= 1.1:
         output = nn.functional.grid_sample(x, vgrid, align_corners=True)
     else:
         output = nn.functional.grid_sample(x, vgrid)

@@ -76,7 +76,7 @@ class Conv4d(_ConvNd):
         stride = _quadruple(stride)
         padding = _quadruple(padding)
         dilation = _quadruple(dilation)
-        if float(torch.__version__[:3]) >= 1.3:
+        if float(torch.__version__[:3]) >= 1.1:
             super(Conv4d, self).__init__(
                 in_channels, out_channels, kernel_size, stride, padding, dilation,
                 transposed=False, output_padding=_quadruple(0), groups=groups, bias=bias,

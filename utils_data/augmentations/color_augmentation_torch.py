@@ -34,7 +34,7 @@ def _rgb2hsv(img):
 
     # Implementation is based on https://github.com/python-pillow/Pillow/blob/4174d4267616897df3746d315d5a2d0f82c656ee/
     # src/libImaging/Convert.c#L330
-    if float(torch.__version__[:3]) >= 1.5:
+    if float(torch.__version__[:3]) >= 1.1:
         maxc = torch.max(img, dim=-3).values
         minc = torch.min(img, dim=-3).values
     else:

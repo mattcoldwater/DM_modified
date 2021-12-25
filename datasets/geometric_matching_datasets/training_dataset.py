@@ -108,7 +108,7 @@ class HomoAffTpsDataset(Dataset):
         sampling_grid.data = sampling_grid.data * padding_factor * crop_factor
         # sample transformed image
 
-        if float(torch.__version__[:3]) >= 1.3:
+        if float(torch.__version__[:3]) >= 1.1:
             warped_image_batch = F.grid_sample(image, sampling_grid, align_corners=True)
         else:
             warped_image_batch = F.grid_sample(image, sampling_grid)
@@ -327,7 +327,7 @@ class HomoAffTpsDataset(Dataset):
             img_src_orig = torch.Tensor(img_src_orig.astype(np.float32))
             img_src_orig = img_src_orig.permute(2, 0, 1)
 
-            if float(torch.__version__[:3]) >= 1.3:
+            if float(torch.__version__[:3]) >= 1.1:
                 img_orig_target_vrbl = F.grid_sample(img_src_orig.unsqueeze(0),
                                                      grid_full, align_corners=True)
             else:
